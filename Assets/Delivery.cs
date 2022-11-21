@@ -8,11 +8,7 @@ public class Delivery : MonoBehaviour
     bool hasPackage = false;
 
     private void Start() {
-        Debug.Log("Delivery started");
-        Debug.Log(hasPackage);
-    }
-    void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("OUCHH");
+        Debug.Log("Delivery started!");
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -21,6 +17,10 @@ public class Delivery : MonoBehaviour
             hasPackage = true;
             Debug.Log("Package Picked Up!");
             Destroy(other.gameObject, destroyDelay);
+        }
+        if (other.tag == "Package" && hasPackage) 
+        {
+            Debug.Log("Already have a package!");
         }
         if (other.tag == "Customer")
         {
